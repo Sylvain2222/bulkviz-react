@@ -2,7 +2,7 @@
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
-  text-align: center;
+  text-align: left;
 }
 
 .logo {
@@ -63,6 +63,7 @@
   width: 18%;
   border-collapse:collapse;
   border: 2.5px solid rgb(189, 197, 223);
+  text-align: center;
 }
 
 .cards{
@@ -83,4 +84,13 @@
 
 .data-row:hover{
     background:gray;
+  }
+
+.WiP{
+    font-size: 3.5em;
+    font-weight: 10;
+    color: #c3c4d3;
+    text-decoration: inherit;
+    text-align: left;
+
   }

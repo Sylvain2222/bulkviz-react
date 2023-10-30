@@ -49,6 +49,7 @@ function App() {
 
   return (
     <>
+    <h className="WiP">Work In Progress</h>
     <h1 className="title">List of cards in the bulk:</h1>
       <table className="card_table">
         <tr className="card_table">
