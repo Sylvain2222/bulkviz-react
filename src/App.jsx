@@ -1,10 +1,10 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, onChange } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import axios from 'axios';
 
-
-// ACTIVER PLUG IN CORS
+// ACTIVER PLUGIN CORS
 // npm run dev
 
 function App() {
@@ -20,7 +20,7 @@ function App() {
     fetchData();
   }, [])
 
-  const [data, setData] = useState(null)
+  const [data, setData] = useState(null) // Hook use to have local state without declaring class
 
   function onClickCard(card) {
     let stringToDisplay = '';
@@ -47,9 +47,41 @@ function App() {
     alert(stringToDisplay);
   }
 
+
+  const [file, setFile] = useState()
+
+  function handleChange(event) {
+    setFile(event.target.files[0])
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault()
+    const url = 'http://127.0.0.1:5173';
+    const formData = new FormData();
+    formData.append('file', file);
+    formData.append('fileName', file.name);
+    const config = {
+      headers: {
+        'content-type': 'multipart/form-data',
+      },
+    };
+    axios.post(url, formData, config).then((response) => {
+      console.log(response.data);
+    });
+
+  }
+
   return (
     <>
     <h className="WiP">Work In Progress</h>
+
+    <div >
+        <form onSubmit={handleSubmit}>
+          <input type="file" onChange={handleChange}/>
+          <button type="submit">Upload</button>
+        </form>
+    </div>
+
     <h1 className="title">List of cards in the bulk:</h1>
       <table className="card_table">
         <tr className="card_table">
